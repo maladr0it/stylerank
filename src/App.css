@@ -1,0 +1,30 @@
+.App {
+  height: 100vh;
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr 1fr;
+  grid-template-areas:
+    "header header"
+    "top-editor preview"
+    "bottom-editor preview";
+}
+
+.App-header {
+  grid-area: header;
+}
+
+.App-topEditor {
+  grid-area: top-editor;
+  border: 1px solid black;
+}
+
+.App-bottomEditor {
+  grid-area: bottom-editor;
+  border: 1px solid black;
+}
+
+.App-previewPane {
+  grid-area: preview;
+  border: 1px solid black;
+}
