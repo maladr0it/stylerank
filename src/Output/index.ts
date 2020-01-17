@@ -1,2 +1,2 @@
-export { Preview } from "./Preview";
+export { Output } from "./Output";
 export { usePreview } from "./usePreview";

@@ -1,10 +1,10 @@
 import React from "react";
 
-import { usePreview } from "Preview";
+import { usePreview } from "Output";
 
 import "./App.css";
 import { Editor } from "./Editor";
-import { Preview } from "./Preview";
+import { Output } from "./Output";
 
 export const App = () => {
   const { handleHTMLChange, handleCSSChange, previewRef } = usePreview();
@@ -24,9 +24,7 @@ export const App = () => {
         language="css"
         onChange={handleCSSChange}
       />
-      <div className="App-previewPane">
-        <Preview />
-      </div>
+      <Output className="App-previewPane" />
     </div>
   );
 };
