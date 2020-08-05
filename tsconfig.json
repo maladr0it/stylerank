@@ -2,10 +2,10 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "baseUrl": "./src",
+    "noEmit": true,
     "jsx": "react",
     "module": "CommonJS",
-    "strict": true,
-    "strictNullChecks": true
+    "strict": true
   },
   "include": ["src"]
 }

@@ -30,8 +30,9 @@ export const Output: React.FC<Props> = ({ className }) => {
 
   return (
     <div className={classNames("Output", className)}>
-      {targetSize && <Preview {...targetSize} />}
-      <Target src={targetImg} onLoad={handleTargetLoad} />
+      <Preview />
+      {/* {targetSize && <Preview {...targetSize} />} */}
+      {/* <Target src={targetImg} onLoad={handleTargetLoad} /> */}
     </div>
   );
 };

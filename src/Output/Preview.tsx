@@ -1,25 +1,38 @@
-import React, { forwardRef } from "react";
+import React, { useRef } from "react";
 
-import "./Preview.css";
+import { useEditorValues } from "EditorContext";
 import { TargetSize } from "./Output";
+import "./Preview.css";
 
-interface Props extends TargetSize {}
+export const Preview = () => {
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const bodyEl = useRef<HTMLElement | null>(null);
+  const styleEl = useRef<HTMLStyleElement | null>(null);
 
-export const Preview = forwardRef<HTMLIFrameElement, Props>(
-  ({ width, height, scale }, ref) => {
-    const style = {
-      width,
-      height,
-      transform: `scale(${scale})`,
-    };
+  const { css, html } = useEditorValues();
 
-    return (
-      <iframe
-        className="Preview-iframe"
-        style={style}
-        title="preview"
-        ref={ref}
-      />
-    );
-  },
-);
+  React.useEffect(() => {
+    if (iframeRef.current) {
+      const previewDocument = iframeRef.current.contentDocument;
+      if (previewDocument) {
+        bodyEl.current = previewDocument.body;
+        styleEl.current = previewDocument.createElement("style");
+        previewDocument.head.appendChild(styleEl.current);
+      }
+    }
+  }, []);
+
+  React.useEffect(() => {
+    if (bodyEl.current) {
+      bodyEl.current.innerHTML = html;
+    }
+  }, [html]);
+
+  React.useEffect(() => {
+    if (styleEl.current) {
+      styleEl.current.innerText = css;
+    }
+  }, [css]);
+
+  return <iframe className="Preview-iframe" title="preview" ref={iframeRef} />;
+};

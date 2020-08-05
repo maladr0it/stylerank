@@ -3,10 +3,11 @@ import ReactDOM from "react-dom";
 
 import { App } from "./App";
 import "./index.css";
+import { EditorContextProvider } from "EditorContext";
 
 // @ts-ignore
 self.MonacoEnvironment = {
-  getWorkerUrl: function(moduleId: string, label: string) {
+  getWorkerUrl: function (_: string, label: string) {
     if (label === "css") {
       return "./css.worker.bundle.js";
     }
@@ -17,4 +18,9 @@ self.MonacoEnvironment = {
   },
 };
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <EditorContextProvider>
+    <App />
+  </EditorContextProvider>,
+  document.getElementById("root"),
+);

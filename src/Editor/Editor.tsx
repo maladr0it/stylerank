@@ -16,6 +16,7 @@ interface Props {
 export const Editor: React.FC<Props> = ({ language, onChange, className }) => {
   const editorEl = useRef<HTMLDivElement>(null);
   const editorRef = useRef<monaco.editor.IStandaloneCodeEditor>();
+  console.log("re-rendered editor");
 
   useEffect(() => {
     let onChangeListener: monaco.IDisposable;
@@ -34,7 +35,7 @@ export const Editor: React.FC<Props> = ({ language, onChange, className }) => {
       editorRef.current?.dispose();
       onChangeListener?.dispose();
     };
-  }, []);
+  }, [onChange]);
 
   return <div className={`Editor ${className}`} ref={editorEl}></div>;
 };
