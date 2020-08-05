@@ -1,0 +1,25 @@
+.Challenge {
+  height: 100%;
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "top-editor preview"
+    "bottom-editor preview";
+}
+
+.Challenge-topEditor {
+  grid-area: top-editor;
+  border: 1px solid black;
+}
+
+.Challenge-bottomEditor {
+  grid-area: bottom-editor;
+  border: 1px solid black;
+}
+
+.Challenge-previewPane {
+  grid-area: preview;
+  border: 1px solid black;
+}

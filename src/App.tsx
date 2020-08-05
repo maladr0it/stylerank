@@ -1,21 +1,26 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+import { Home } from "./Home";
+import { Challenge } from "./Challenge";
 import "./App.css";
-import { Editor } from "./Editor";
-import { Output } from "./Output";
-import { useEditorSetters } from "EditorContext";
 
 export const App = () => {
-  const { setHtml, setCss } = useEditorSetters();
-
   return (
     <div className="App">
       <div className="App-header">
         <h1>Stylerank</h1>
       </div>
-      <Editor className="App-topEditor" language="html" onChange={setHtml} />
-      <Editor className="App-bottomEditor" language="css" onChange={setCss} />
-      <Output className="App-previewPane" />
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/challenge">
+            <Challenge />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 };
