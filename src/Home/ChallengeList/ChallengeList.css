@@ -1,8 +1,4 @@
-.Home {
-  background-color: #f5f5f5;
-}
-
-.difficulty-key {
+.ChallengeList-difficultyKey {
   padding: 16px 16px 0;
 }
 
@@ -15,7 +11,7 @@
   list-style: none;
   padding: 16px;
 }
-.challengeItem {
+.ChallengeList-item {
   display: block;
   border-radius: 8px;
   background-color: #fff;
@@ -25,30 +21,27 @@
   text-decoration: none;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 }
-.challengeItem:visited {
+
+.ChallengeList-item:visited {
   color: #756d6d;
 }
-.challengeItem:hover {
+.ChallengeList-item:hover {
   box-shadow: 0 0 0 4px pink;
 }
 
-.challengeItem-imageContainer {
+.ChallengeList-imageContainer {
   width: 100%;
 }
 
-.challengeItem-image {
+.ChallengeList-image {
   display: block;
   width: 100%;
   object-fit: cover;
 }
 
-.challengeItem-description {
+.ChallengeList-description {
   padding: 16px;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   transition: 0.15s ease;
-}
-
-.challengeItem:hover .challengeItem-description {
-  border: transparent;
 }
