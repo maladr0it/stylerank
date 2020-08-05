@@ -1,3 +1,43 @@
 .Home {
-  background-color: blue;
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  place-content: start;
+  grid-gap: 16px;
+  list-style: none;
+  padding: 16px;
+  background-color: #f5f5f5;
+}
+
+.challengeItem {
+  display: block;
+  border-radius: 8px;
+  background-color: #fff;
+  overflow: hidden;
+  transition: 0.15s ease;
+}
+
+.challengeItem:hover {
+  box-shadow: 0 0 0 4px pink;
+}
+
+.challengeItem-imageContainer {
+  width: 100%;
+}
+
+.challengeItem-image {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+.challengeItem-description {
+  padding: 16px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  transition: 0.15s ease;
+}
+
+.challengeItem:hover .challengeItem-description {
+  border: transparent;
 }
