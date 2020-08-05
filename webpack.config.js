@@ -20,6 +20,10 @@ module.exports = {
     modules: ["node_modules", "src"],
   },
 
+  devServer: {
+    historyApiFallback: true,
+  },
+
   module: {
     rules: [
       {
