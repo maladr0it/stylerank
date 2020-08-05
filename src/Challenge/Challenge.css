@@ -1,12 +1,11 @@
 .Challenge {
-  height: 100%;
   display: grid;
-
+  height: 100%;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   grid-template-areas:
-    "top-editor preview"
-    "bottom-editor preview";
+    "top-editor output"
+    "bottom-editor target";
 }
 
 .Challenge-topEditor {
@@ -19,7 +18,14 @@
   border: 1px solid black;
 }
 
-.Challenge-previewPane {
-  grid-area: preview;
+.Challenge-output {
+  grid-area: output;
+  /* display: block; */
+  border: 1px solid black;
+}
+
+.Challenge-target {
+  grid-area: target;
+  /* display: block; */
   border: 1px solid black;
 }

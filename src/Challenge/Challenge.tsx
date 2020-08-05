@@ -2,10 +2,16 @@ import React from "react";
 
 import { useEditorSetters } from "../EditorContext";
 import { Editor } from "../Editor";
-import { Output } from "../Output";
+
+import { Output } from "./Output";
+import { Target } from "./Target";
 import "./Challenge.css";
 
-export const Challenge = () => {
+interface Props {
+  initialValues: { html: string; css: string };
+}
+
+export const Challenge = ({ initialValues }: Props) => {
   const { setHtml, setCss } = useEditorSetters();
 
   return (
@@ -13,14 +19,17 @@ export const Challenge = () => {
       <Editor
         className="Challenge-topEditor"
         language="html"
+        initialValue={initialValues.html}
         onChange={setHtml}
       />
       <Editor
         className="Challenge-bottomEditor"
         language="css"
+        initialValue={initialValues.css}
         onChange={setCss}
       />
-      <Output className="Challenge-previewPane" />
+      <Output className="Challenge-output" />
+      <Target className="Challenge-target" />
     </div>
   );
 };
