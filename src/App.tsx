@@ -7,10 +7,10 @@ import "./App.css";
 
 export const App = () => {
   return (
-    <div className="App">
-      <div className="App-header">
+    <>
+      <header className="App-header">
         <h1>Stylerank</h1>
-      </div>
+      </header>
       <Switch>
         <Route exact path="/">
           <Home />
@@ -19,6 +19,6 @@ export const App = () => {
           <ChallengeContainer />
         </Route>
       </Switch>
-    </div>
+    </>
   );
 };

@@ -1,19 +1,19 @@
 import React, { createContext, useContext, useState, useMemo } from "react";
 
-interface ContextValues {
+export interface EditorValues {
   html: string;
   css: string;
 }
-const EditorValuesContext = createContext<ContextValues | null>(null);
+const EditorValuesContext = createContext<EditorValues | null>(null);
 
-interface ContextSetters {
+interface EditorSetters {
   setHtml: (value: string) => void;
   setCss: (value: string) => void;
 }
-const EditorSettersContext = createContext<ContextSetters | null>(null);
+const EditorSettersContext = createContext<EditorSetters | null>(null);
 
 interface Props {
-  initialValues: ContextValues;
+  initialValues: EditorValues;
   children: React.ReactNode;
 }
 

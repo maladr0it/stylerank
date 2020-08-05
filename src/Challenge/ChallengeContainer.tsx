@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+import { getChallenge, ChallengeData } from "../services/challenges";
 
 import { Challenge } from "./Challenge";
 import { EditorContextProvider } from "../EditorContext";
@@ -20,9 +22,31 @@ self.MonacoEnvironment = {
 };
 
 export const ChallengeContainer = () => {
+  const [challengeData, setChallengeData] = useState<ChallengeData | null>(
+    null,
+  );
+
+  useEffect(() => {
+    const load = async () => {
+      const data = await getChallenge("123");
+      setChallengeData(data);
+    };
+
+    load();
+  }, []);
+
   return (
-    <EditorContextProvider initialValues={INITIAL_VALUES}>
-      <Challenge initialValues={INITIAL_VALUES} />
-    </EditorContextProvider>
+    <>
+      {challengeData ? (
+        <EditorContextProvider initialValues={challengeData.input}>
+          <Challenge
+            initialValues={challengeData.input}
+            // target={challengeData.target}
+          />
+        </EditorContextProvider>
+      ) : (
+        <h1>LOADING...</h1>
+      )}
+    </>
   );
 };

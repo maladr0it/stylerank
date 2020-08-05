@@ -4,8 +4,19 @@
   box-sizing: inherit;
 }
 
+:root {
+  height: 100%;
+}
+
 body {
-  box-sizing: border-box;
+  height: 100%;
   margin: 0;
+  box-sizing: border-box;
   font-family: sans-serif;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
