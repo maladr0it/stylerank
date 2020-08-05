@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useEditorSetters } from "../EditorContext";
+import { useEditorSetters, EditorValues } from "../EditorContext";
 import { Editor } from "../Editor";
 
 import { Output } from "./Output";
@@ -8,7 +8,7 @@ import { Target } from "./Target";
 import "./Challenge.css";
 
 interface Props {
-  initialValues: { html: string; css: string };
+  initialValues: EditorValues;
 }
 
 export const Challenge = ({ initialValues }: Props) => {

@@ -20,12 +20,10 @@
 
 .Challenge-output {
   grid-area: output;
-  /* display: block; */
   border: 1px solid black;
 }
 
 .Challenge-target {
   grid-area: target;
-  /* display: block; */
   border: 1px solid black;
 }

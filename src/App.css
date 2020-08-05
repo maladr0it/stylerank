@@ -1,6 +1,4 @@
-.App {
-  height: 100vh;
-  display: grid;
-  grid-template-rows: auto 1fr;
-  overflow: hidden;
+.App-header {
+  background-color: greenyellow;
+  padding: 16px;
 }
