@@ -1,15 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { usePreview } from "Output";
-
-import "./App.css";
-import { Editor } from "./Editor";
-import { Output } from "./Output";
 import { Home } from "./Home";
+import { Challenge } from "./Challenge";
+import "./App.css";
 
 export const App = () => {
-  const { handleHTMLChange, handleCSSChange, previewRef } = usePreview();
-
   return (
     <div className="App">
       <div className="App-header">
@@ -18,17 +13,7 @@ export const App = () => {
       <Router>
         <Switch>
           <Route path="/challenge">
-            <Editor
-              className="App-topEditor"
-              language="html"
-              onChange={handleHTMLChange}
-            />
-            <Editor
-              className="App-bottomEditor"
-              language="css"
-              onChange={handleCSSChange}
-            />
-            <Output className="App-previewPane" />
+            <Challenge />
           </Route>
           <Route exact path="/">
             <Home />
