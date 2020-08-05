@@ -1,15 +1,18 @@
 import React, { useRef } from "react";
+import classNames from "classnames";
 
-import { useEditorValues } from "EditorContext";
-import { TargetSize } from "./Output";
 import "./Preview.css";
 
-export const Preview = () => {
+interface Props {
+  css: string;
+  html: string;
+  className?: string;
+}
+
+export const Preview = ({ css, html, className }: Props) => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const bodyEl = useRef<HTMLElement | null>(null);
   const styleEl = useRef<HTMLStyleElement | null>(null);
-
-  const { css, html } = useEditorValues();
 
   React.useEffect(() => {
     if (iframeRef.current) {
@@ -34,5 +37,9 @@ export const Preview = () => {
     }
   }, [css]);
 
-  return <iframe className="Preview-iframe" title="preview" ref={iframeRef} />;
+  return (
+    <div className={classNames("Preview-container", className)}>
+      <iframe className="Preview" title="preview" ref={iframeRef} />
+    </div>
+  );
 };

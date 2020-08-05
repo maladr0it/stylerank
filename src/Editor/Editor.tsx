@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import * as monaco from "monaco-editor";
 
+import "./Editor.css";
+
 const OPTIONS: monaco.editor.IStandaloneEditorConstructionOptions = {
   minimap: {
     enabled: false,
@@ -8,22 +10,27 @@ const OPTIONS: monaco.editor.IStandaloneEditorConstructionOptions = {
 };
 
 interface Props {
-  className: string;
   language: "html" | "css";
+  initialValue: string;
   onChange: (value: string) => void;
+  className?: string;
 }
 
-export const Editor: React.FC<Props> = ({ language, onChange, className }) => {
+export const Editor = ({
+  language,
+  initialValue,
+  onChange,
+  className,
+}: Props) => {
   const editorEl = useRef<HTMLDivElement>(null);
   const editorRef = useRef<monaco.editor.IStandaloneCodeEditor>();
-  console.log("re-rendered editor");
 
   useEffect(() => {
     let onChangeListener: monaco.IDisposable;
 
     if (editorEl.current) {
       editorRef.current = monaco.editor.create(editorEl.current, OPTIONS);
-      const model = monaco.editor.createModel("", language);
+      const model = monaco.editor.createModel(initialValue, language);
       editorRef.current.setModel(model);
 
       onChangeListener = model.onDidChangeContent(() => {

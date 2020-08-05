@@ -13,12 +13,13 @@ interface ContextSetters {
 const EditorSettersContext = createContext<ContextSetters | null>(null);
 
 interface Props {
+  initialValues: ContextValues;
   children: React.ReactNode;
 }
 
-export const EditorContextProvider = ({ children }: Props) => {
-  const [html, setHtml] = useState("");
-  const [css, setCss] = useState("");
+export const EditorContextProvider = ({ initialValues, children }: Props) => {
+  const [html, setHtml] = useState(initialValues.html);
+  const [css, setCss] = useState(initialValues.css);
 
   const setters = useMemo(() => ({ setHtml, setCss }), [setHtml, setCss]);
 
