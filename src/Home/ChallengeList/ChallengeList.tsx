@@ -9,7 +9,7 @@ const challenges = [
     difficulty: "easy",
     id: 1,
     coverImage: {
-      src: "/theStaircase.png",
+      src: "/static/images/theStaircase.png",
       description: "",
     },
     images: [
@@ -21,50 +21,57 @@ const challenges = [
     ],
   },
   {
-    name: "flex challenge 1",
+    name: "Top Navigation",
     difficulty: "easy",
     id: 2,
-    coverImage: { src: "assets/target.png", description: "" },
-    images: [{ src: "assets/target.png", description: "" }],
+    coverImage: {
+      src: "/static/images/topNav.png",
+      description: "",
+    },
+    images: [{ src: "/static/images/topNav.png", description: "" }],
   },
   {
-    name: "flex challenge 1",
-    difficulty: "medium",
+    name: "Button Group",
+    difficulty: "hard",
     id: 3,
     coverImage: {
-      src: "https://assets.codepen.io/285131/adventure.jpg",
+      src: "/static/images/buttonGroupHover.png",
       description: "",
     },
     images: [
       {
-        src: "https://assets.codepen.io/285131/adventure.jpg",
+        src: "/static/images/buttonGroupHover.png",
+        description: "",
+      },
+      {
+        src: "/static/images/buttonGroup.png",
         description: "",
       },
     ],
   },
   {
-    name: "flex challenge 1",
+    name: "matrix",
     difficulty: "hard",
     id: 4,
-    coverImage: { src: "assets/target.png", description: "" },
+    coverImage: { src: "/static/images/matrix.gif", description: "" },
     images: [
       {
-        src: "https://assets.codepen.io/285131/adventure.jpg",
+        src: "/static/images/matrix.gif",
         description: "",
       },
     ],
   },
   {
-    name: "flex challenge 1",
-    difficulty: "hard",
+    name: "Progress bar",
+    difficulty: "medium",
     id: 5,
     coverImage: {
-      src: "https://assets.codepen.io/285131/pink-pastel-juicy-banana.jpg",
+      src: "/static/images/progressBar.png",
       description: "",
     },
     images: [
       {
-        src: "https://assets.codepen.io/285131/pink-pastel-juicy-banana.jpg",
+        src: "/static/images/progressBar.png",
         description: "",
       },
     ],
