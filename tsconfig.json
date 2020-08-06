@@ -4,7 +4,8 @@
     "noEmit": true,
     "jsx": "react",
     "module": "CommonJS",
-    "strict": true
+    "strict": true,
+    "resolveJsonModule": true
   },
   "include": ["src"]
 }
