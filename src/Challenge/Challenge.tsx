@@ -82,7 +82,9 @@ export const Challenge = () => {
           </section>
           <section className="Challenge-pane Challenge-targetPane">
             <header className="Challenge-paneHeader">Target</header>
-            <Target className="Challenge-paneContent" />
+            <div className="Challenge-paneContent">
+              <Target image={state.data.coverImage} />
+            </div>
           </section>
         </div>
       ) : (

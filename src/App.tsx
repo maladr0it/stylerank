@@ -7,11 +7,11 @@ import "./App.css";
 
 export const App = () => {
   return (
-    <>
+    <div className="App">
       <header className="App-header">
-        <Link to="/">Stylerank</Link>
-        <Link to="/challenge/001">001</Link>
-        <Link to="/challenge/002">002</Link>
+        <Link className="App-homeLink" to="/">
+          <h1>Stylerank</h1>
+        </Link>
       </header>
       <Switch>
         <Route exact path="/">
@@ -21,6 +21,6 @@ export const App = () => {
           <Challenge />
         </Route>
       </Switch>
-    </>
+    </div>
   );
 };

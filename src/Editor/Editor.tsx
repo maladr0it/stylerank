@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import * as monaco from "monaco-editor";
-
+import cloudsMidnight from "./themes/CloudsMidnight.json";
 import "./Editor.css";
 
 const OPTIONS: monaco.editor.IStandaloneEditorConstructionOptions = {
@@ -17,6 +17,13 @@ interface Props {
   onChange: (value: string) => void;
   className?: string;
 }
+
+monaco.editor.defineTheme(
+  "cloudsMidnight",
+  cloudsMidnight as monaco.editor.IStandaloneThemeData,
+);
+
+monaco.editor.setTheme("cloudsMidnight");
 
 export const Editor = React.memo(
   ({ language, sourceId, initialValue, onChange, className }: Props) => {

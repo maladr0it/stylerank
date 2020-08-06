@@ -2,9 +2,9 @@ import { EditorValues } from "../types";
 import { delay } from "../utils";
 
 const DB_URL = "/static/db";
-const FAKE_DELAY = 250;
+const FAKE_DELAY = 0;
 
-interface Image {
+export interface Image {
   src: string;
   description: string;
 }

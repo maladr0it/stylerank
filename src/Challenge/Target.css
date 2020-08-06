@@ -1,0 +1,15 @@
+.Target {
+  height: 100%;
+}
+
+.Target-imageContainer {
+  height: 100%;
+  background-color: var(--color-background-primary);
+}
+
+.Target-image {
+  display: block;
+  height: 100%;
+  margin: 0 auto;
+  object-fit: cover;
+}

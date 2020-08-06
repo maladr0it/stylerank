@@ -3,34 +3,44 @@
   grid-auto-flow: row;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   place-content: start;
-  grid-gap: 16px;
+  grid-gap: 24px;
   list-style: none;
-  padding: 16px;
+  padding: 24px;
+}
+
+.ChallengeList-itemContainer {
+  height: 100%;
 }
 
 .ChallengeList-item {
-  display: block;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100%;
   border-radius: 8px;
-  background-color: #fff;
+  background-color: var(--color-background-primary);
   overflow: hidden;
   transition: 0.15s ease;
-  color: #756d6d;
   text-decoration: none;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 }
 
 .ChallengeList-item:visited {
   color: #756d6d;
 }
+
 .ChallengeList-item:hover {
-  box-shadow: 0 0 0 4px pink;
+  box-shadow: 0 0 0 4px var(--color-background-secondary),
+    0 0 0 6px var(--color-highlight);
 }
 
 .ChallengeList-imageContainer {
+  position: relative;
   width: 100%;
+  padding-bottom: 100%;
+  background-color: var(--color-background-primary);
 }
 
 .ChallengeList-image {
+  position: absolute;
   display: block;
   width: 100%;
   object-fit: cover;
@@ -40,15 +50,20 @@
   padding: 16px;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
+  color: var(--color-text);
   transition: 0.15s ease;
+}
+
+.ChallengeList-name {
+  display: inline-block;
+  margin-right: 8px;
 }
 
 .ChallengeList-difficulty {
   display: inline-block;
   border-radius: 8px;
   padding: 4px 8px;
-  background-color: pink;
-  color: white;
+  color: var(--color-text);
 }
 
 .ChallengeList-difficulty--easy {
@@ -56,7 +71,7 @@
 }
 
 .ChallengeList-difficulty--medium {
-  background-color: gold;
+  background-color: orange;
 }
 
 .ChallengeList-difficulty--hard {
