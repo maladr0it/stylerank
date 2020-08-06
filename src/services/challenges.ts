@@ -1,30 +1,32 @@
 import { delay } from "../utils";
 
-// FAKE API
+import challenge_data from "./db_challenges.json";
+
+console.log(challenge_data);
+
+interface Image {
+  src: string;
+  description: string;
+}
 
 export interface ChallengeData {
-  input: {
-    css: string;
+  id: string;
+  name: string;
+  difficulty: "easy" | "medium" | "hard";
+  coverImage: Image;
+  images: Image[];
+  initialEditorValues: {
     html: string;
-  };
-  target: {
     css: string;
-    html: string;
   };
 }
 
 export const getChallenge = async (id: string) => {
   await delay(2000);
-
-  const result: ChallengeData = {
-    input: {
-      html: `<h1>Initial ${id}</h1>`,
-      css: `h1 { color: pink }`,
-    },
-    target: {
-      html: `<h1>Wow ${id}</h1>`,
-      css: `h1 { color: red };`,
-    },
-  };
+  const data = JSON.parse(challenge_data) as ChallengeData[];
+  const result = data.find((challenge) => challenge.id === id);
+  if (!result) {
+    throw new Error("challenge not found");
+  }
   return result;
 };

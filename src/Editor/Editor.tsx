@@ -11,6 +11,7 @@ const OPTIONS: monaco.editor.IStandaloneEditorConstructionOptions = {
 
 interface Props {
   language: "html" | "css";
+  sourceId: string;
   initialValue: string;
   onChange: (value: string) => void;
   className?: string;
@@ -18,6 +19,7 @@ interface Props {
 
 export const Editor = ({
   language,
+  sourceId,
   initialValue,
   onChange,
   className,
@@ -30,7 +32,7 @@ export const Editor = ({
 
     if (editorEl.current) {
       editorRef.current = monaco.editor.create(editorEl.current, OPTIONS);
-      const model = monaco.editor.createModel(initialValue, language);
+      const model = monaco.editor.createModel("", language);
       editorRef.current.setModel(model);
 
       onChangeListener = model.onDidChangeContent(() => {
@@ -43,6 +45,12 @@ export const Editor = ({
       onChangeListener?.dispose();
     };
   }, [onChange]);
+
+  useEffect(() => {
+    if (editorRef.current) {
+      editorRef.current.setValue(initialValue);
+    }
+  }, [sourceId, initialValue]);
 
   return <div className={`Editor ${className}`} ref={editorEl}></div>;
 };

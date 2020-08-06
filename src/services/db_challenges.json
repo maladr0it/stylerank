@@ -1,0 +1,48 @@
+[
+  {
+    "id": "challenge_001",
+    "name": "Challenge 1",
+    "difficulty": "easy",
+    "coverImage": {
+      "src": "assets/img_001.jpeg",
+      "description": ""
+    },
+    "images": [
+      {
+        "src": "assets/img_002.jpeg",
+        "description": ""
+      },
+      {
+        "src": "assets/img_001.jpeg",
+        "description": ""
+      }
+    ],
+    "initialEditorValues": {
+      "html": "<h1>challenge 1<h1>",
+      "css": "h1 { color: blue; }"
+    }
+  },
+  {
+    "id": "challenge_002",
+    "name": "Challenge 2",
+    "difficulty": "medium",
+    "coverImage": {
+      "src": "assets/img_002.jpeg",
+      "description": ""
+    },
+    "images": [
+      {
+        "src": "assets/img_001.jpeg",
+        "description": ""
+      },
+      {
+        "src": "assets/img_002.jpeg",
+        "description": ""
+      }
+    ],
+    "initialEditorValues": {
+      "html": "<h1>challenge 2<h1>",
+      "css": "h1 { color: red; }"
+    }
+  }
+]
