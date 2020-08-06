@@ -1,35 +1,76 @@
-import React from "react";
+import React, { useEffect, useCallback, useReducer } from "react";
 
-import { useEditorSetters, EditorValues } from "../EditorContext";
+import { getChallenge, ChallengeData } from "../services/challenges";
 import { Editor } from "../Editor";
 
+import { challengeReducer } from "./challengeReducer";
 import { Output } from "./Output";
 import { Target } from "./Target";
 import "./Challenge.css";
 
-interface Props {
-  initialValues: EditorValues;
-}
+const INITIAL_STATE = {
+  data: null,
+  editorValues: { html: "", css: "" },
+};
 
-export const Challenge = ({ initialValues }: Props) => {
-  const { setHtml, setCss } = useEditorSetters();
+// set up monaco editor
+// @ts-ignore
+self.MonacoEnvironment = {
+  getWorkerUrl: function (_: string, label: string) {
+    if (label === "css") {
+      return "./css.worker.bundle.js";
+    }
+    if (label === "html") {
+      return "./html.worker.bundle.js";
+    }
+    return "./editor.worker.bundle.js";
+  },
+};
+
+export const Challenge = () => {
+  const [state, dispatch] = useReducer(challengeReducer, INITIAL_STATE);
+
+  const setHtml = useCallback((value: string) => {
+    dispatch({ type: "html_updated", payload: value });
+  }, []);
+
+  const setCss = useCallback((value: string) => {
+    dispatch({ type: "css_updated", payload: value });
+  }, []);
+
+  useEffect(() => {
+    const load = async () => {
+      const data = await getChallenge("challenge_001");
+      dispatch({ type: "challenge_loaded", payload: data });
+    };
+
+    load();
+  }, []);
 
   return (
-    <div className="Challenge">
-      <Editor
-        className="Challenge-topEditor"
-        language="html"
-        initialValue={initialValues.html}
-        onChange={setHtml}
-      />
-      <Editor
-        className="Challenge-bottomEditor"
-        language="css"
-        initialValue={initialValues.css}
-        onChange={setCss}
-      />
-      <Output className="Challenge-output" />
-      <Target className="Challenge-target" />
-    </div>
+    <>
+      {state.data ? (
+        <div className="Challenge">
+          <Editor
+            className="Challenge-topEditor"
+            language="html"
+            sourceId={state.data.id}
+            initialValue={state.data.initialEditorValues.html}
+            onChange={setHtml}
+          />
+          <Editor
+            className="Challenge-bottomEditor"
+            language="css"
+            sourceId={state.data.id}
+            initialValue={state.data.initialEditorValues.css}
+            onChange={setCss}
+          />
+          <Output className="Challenge-output" values={state.editorValues} />
+          <Target className="Challenge-target" />
+        </div>
+      ) : (
+        <h1>LOADING...</h1>
+      )}
+    </>
   );
 };

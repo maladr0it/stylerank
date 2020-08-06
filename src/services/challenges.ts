@@ -1,8 +1,6 @@
 import { delay } from "../utils";
 
-import challenge_data from "./db_challenges.json";
-
-console.log(challenge_data);
+const DB_URL = "static/db";
 
 interface Image {
   src: string;
@@ -23,7 +21,9 @@ export interface ChallengeData {
 
 export const getChallenge = async (id: string) => {
   await delay(2000);
-  const data = JSON.parse(challenge_data) as ChallengeData[];
+  const resp = await fetch(`${DB_URL}/challenges.json`);
+  const data = (await resp.json()) as ChallengeData[];
+
   const result = data.find((challenge) => challenge.id === id);
   if (!result) {
     throw new Error("challenge not found");

@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 
 import { Home } from "./Home";
-import { ChallengeContainer } from "./Challenge";
+import { Challenge } from "./Challenge";
 import "./App.css";
 
 export const App = () => {
@@ -16,7 +16,7 @@ export const App = () => {
           <Home />
         </Route>
         <Route path="/challenge">
-          <ChallengeContainer />
+          <Challenge />
         </Route>
       </Switch>
     </>

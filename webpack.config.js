@@ -42,14 +42,7 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "assets/[name].[ext]",
-            },
-          },
-        ],
+        use: ["file-loader"],
       },
     ],
   },
@@ -60,7 +53,9 @@ module.exports = {
     }),
 
     new CopyPlugin({
-      patterns: [{ from: "public", to: path.join(__dirname, "/dist") }],
+      patterns: [
+        { from: "static", to: path.resolve(__dirname, "dist", "static") },
+      ],
     }),
   ],
 };

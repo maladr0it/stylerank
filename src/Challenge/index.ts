@@ -1,1 +1,1 @@
-export { ChallengeContainer } from "./ChallengeContainer";
+export { Challenge } from "./Challenge";

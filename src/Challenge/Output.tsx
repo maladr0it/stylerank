@@ -1,14 +1,12 @@
 import React from "react";
 
-import { useEditorValues } from "../EditorContext";
 import { Preview } from "../Preview";
 
 interface Props {
+  values: { html: string; css: string };
   className?: string;
 }
 
-export const Output = ({ className }: Props) => {
-  const values = useEditorValues();
-
+export const Output = ({ values, className }: Props) => {
   return <Preview className={className} {...values} />;
 };
