@@ -59,7 +59,7 @@ export const Challenge = () => {
               className="Challenge-paneContent"
               language="html"
               sourceId={state.data.id}
-              initialValue={state.data.initialEditorValues.html}
+              initialValue={state.data.initialEditorValues.html || ""}
               onChange={setHtml}
             />
           </section>
@@ -69,7 +69,7 @@ export const Challenge = () => {
               className="Challenge-paneContent"
               language="css"
               sourceId={state.data.id}
-              initialValue={state.data.initialEditorValues.css}
+              initialValue={state.data.initialEditorValues.css || ""}
               onChange={setCss}
             />
           </section>

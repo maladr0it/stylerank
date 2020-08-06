@@ -1,12 +1,19 @@
 import React from "react";
 
+import { EditorValues } from "../types";
 import { Preview } from "../Preview";
 
 interface Props {
-  values: { html: string; css: string };
+  values: EditorValues;
   className?: string;
 }
 
 export const Output = ({ values, className }: Props) => {
-  return <Preview className={className} {...values} />;
+  return (
+    <Preview
+      className={className}
+      html={values.html || ""}
+      css={values.css || ""}
+    />
+  );
 };

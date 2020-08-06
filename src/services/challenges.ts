@@ -1,3 +1,4 @@
+import { EditorValues } from "../types";
 import { delay } from "../utils";
 
 const DB_URL = "/static/db";
@@ -14,10 +15,7 @@ export interface ChallengeData {
   difficulty: "easy" | "medium" | "hard";
   coverImage: Image;
   images: Image[];
-  initialEditorValues: {
-    html: string;
-    css: string;
-  };
+  initialEditorValues: EditorValues;
 }
 
 export const getChallenges = async () => {

@@ -1,4 +1,4 @@
 export interface EditorValues {
-  html: string;
-  css: string;
+  html: string | null;
+  css: string | null;
 }
