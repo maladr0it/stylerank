@@ -4,6 +4,7 @@ import * as monaco from "monaco-editor";
 import "./Editor.css";
 
 const OPTIONS: monaco.editor.IStandaloneEditorConstructionOptions = {
+  automaticLayout: true,
   minimap: {
     enabled: false,
   },
@@ -47,6 +48,10 @@ export const Editor = React.memo(
       }
     }, [sourceId, initialValue]);
 
-    return <div className={`Editor ${className}`} ref={editorEl}></div>;
+    return (
+      <div className={className}>
+        <div className="Editor" ref={editorEl}></div>
+      </div>
+    );
   },
 );

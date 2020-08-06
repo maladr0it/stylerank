@@ -10,6 +10,8 @@ module.exports = {
     "html.worker": "monaco-editor/esm/vs/language/html/html.worker",
   },
 
+  devtool: "eval-source-map",
+
   output: {
     globalObject: "self",
     filename: "[name].bundle.js",

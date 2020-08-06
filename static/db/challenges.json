@@ -18,7 +18,7 @@
       }
     ],
     "initialEditorValues": {
-      "html": "<h1>challenge 1<h1>",
+      "html": "<h1>challenge 1</h1>",
       "css": "h1 { color: blue; }"
     }
   },
@@ -41,7 +41,7 @@
       }
     ],
     "initialEditorValues": {
-      "html": "<h1>challenge 2<h1>",
+      "html": "<h1>challenge 2</h1>",
       "css": "h1 { color: red; }"
     }
   }

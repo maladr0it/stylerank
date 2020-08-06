@@ -1,6 +1,7 @@
 import { delay } from "../utils";
 
 const DB_URL = "/static/db";
+const FAKE_DELAY = 500;
 
 interface Image {
   src: string;
@@ -20,7 +21,7 @@ export interface ChallengeData {
 }
 
 export const getChallenge = async (id: string) => {
-  await delay(2000);
+  await delay(FAKE_DELAY);
   const resp = await fetch(`${DB_URL}/challenges.json`);
   const data = (await resp.json()) as ChallengeData[];
 

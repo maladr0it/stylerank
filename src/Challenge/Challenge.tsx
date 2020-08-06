@@ -53,22 +53,37 @@ export const Challenge = () => {
     <>
       {state.data ? (
         <div className="Challenge">
-          <Editor
-            className="Challenge-topEditor"
-            language="html"
-            sourceId={state.data.id}
-            initialValue={state.data.initialEditorValues.html}
-            onChange={setHtml}
-          />
-          <Editor
-            className="Challenge-bottomEditor"
-            language="css"
-            sourceId={state.data.id}
-            initialValue={state.data.initialEditorValues.css}
-            onChange={setCss}
-          />
-          <Output className="Challenge-output" values={state.editorValues} />
-          <Target className="Challenge-target" />
+          <section className="Challenge-pane Challenge-htmlPane">
+            <header className="Challenge-paneHeader">HTML</header>
+            <Editor
+              className="Challenge-paneContent"
+              language="html"
+              sourceId={state.data.id}
+              initialValue={state.data.initialEditorValues.html}
+              onChange={setHtml}
+            />
+          </section>
+          <section className="Challenge-pane Challenge-cssPane">
+            <header className="Challenge-paneHeader">CSS</header>
+            <Editor
+              className="Challenge-paneContent"
+              language="css"
+              sourceId={state.data.id}
+              initialValue={state.data.initialEditorValues.css}
+              onChange={setCss}
+            />
+          </section>
+          <section className="Challenge-pane Challenge-outputPane">
+            <header className="Challenge-paneHeader">Output</header>
+            <Output
+              className="Challenge-paneContent"
+              values={state.editorValues}
+            />
+          </section>
+          <section className="Challenge-pane Challenge-targetPane">
+            <header className="Challenge-paneHeader">Target</header>
+            <Target className="Challenge-paneContent" />
+          </section>
         </div>
       ) : (
         <h1>LOADING...</h1>

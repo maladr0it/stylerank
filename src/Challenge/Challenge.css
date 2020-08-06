@@ -1,29 +1,46 @@
 .Challenge {
+  flex: 1;
+  overflow: hidden;
+
   display: grid;
-  height: 100%;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   grid-template-areas:
-    "top-editor output"
-    "bottom-editor target";
+    "top-left top-right"
+    "bottom-left bottom-right";
 }
 
-.Challenge-topEditor {
-  grid-area: top-editor;
+.Challenge-pane {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
   border: 1px solid black;
+  overflow: hidden;
 }
 
-.Challenge-bottomEditor {
-  grid-area: bottom-editor;
-  border: 1px solid black;
+.Challenge-htmlPane {
+  grid-area: top-left;
 }
 
-.Challenge-output {
-  grid-area: output;
-  border: 1px solid black;
+.Challenge-cssPane {
+  grid-area: bottom-left;
 }
 
-.Challenge-target {
-  grid-area: target;
-  border: 1px solid black;
+.Challenge-outputPane {
+  grid-area: top-right;
+}
+
+.Challenge-targetPane {
+  grid-area: bottom-right;
+}
+
+.Challenge-paneHeader {
+  padding: 8px;
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.075);
+}
+
+.Challenge-paneContent {
+  flex: 1;
+  overflow: hidden;
 }
