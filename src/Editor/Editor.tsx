@@ -17,40 +17,36 @@ interface Props {
   className?: string;
 }
 
-export const Editor = ({
-  language,
-  sourceId,
-  initialValue,
-  onChange,
-  className,
-}: Props) => {
-  const editorEl = useRef<HTMLDivElement>(null);
-  const editorRef = useRef<monaco.editor.IStandaloneCodeEditor>();
+export const Editor = React.memo(
+  ({ language, sourceId, initialValue, onChange, className }: Props) => {
+    const editorEl = useRef<HTMLDivElement>(null);
+    const editorRef = useRef<monaco.editor.IStandaloneCodeEditor>();
 
-  useEffect(() => {
-    let onChangeListener: monaco.IDisposable;
+    useEffect(() => {
+      let onChangeListener: monaco.IDisposable;
 
-    if (editorEl.current) {
-      editorRef.current = monaco.editor.create(editorEl.current, OPTIONS);
-      const model = monaco.editor.createModel("", language);
-      editorRef.current.setModel(model);
+      if (editorEl.current) {
+        editorRef.current = monaco.editor.create(editorEl.current, OPTIONS);
+        const model = monaco.editor.createModel("", language);
+        editorRef.current.setModel(model);
 
-      onChangeListener = model.onDidChangeContent(() => {
-        onChange(model.getValue());
-      });
-    }
+        onChangeListener = model.onDidChangeContent(() => {
+          onChange(model.getValue());
+        });
+      }
 
-    return () => {
-      editorRef.current?.dispose();
-      onChangeListener?.dispose();
-    };
-  }, [onChange]);
+      return () => {
+        editorRef.current?.dispose();
+        onChangeListener?.dispose();
+      };
+    }, [onChange]);
 
-  useEffect(() => {
-    if (editorRef.current) {
-      editorRef.current.setValue(initialValue);
-    }
-  }, [sourceId, initialValue]);
+    useEffect(() => {
+      if (editorRef.current) {
+        editorRef.current.setValue(initialValue);
+      }
+    }, [sourceId, initialValue]);
 
-  return <div className={`Editor ${className}`} ref={editorEl}></div>;
-};
+    return <div className={`Editor ${className}`} ref={editorEl}></div>;
+  },
+);

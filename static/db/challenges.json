@@ -1,6 +1,6 @@
 [
   {
-    "id": "challenge_001",
+    "id": "001",
     "name": "Challenge 1",
     "difficulty": "easy",
     "coverImage": {
@@ -23,7 +23,7 @@
     }
   },
   {
-    "id": "challenge_002",
+    "id": "002",
     "name": "Challenge 2",
     "difficulty": "medium",
     "coverImage": {

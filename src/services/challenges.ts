@@ -1,6 +1,6 @@
 import { delay } from "../utils";
 
-const DB_URL = "static/db";
+const DB_URL = "/static/db";
 
 interface Image {
   src: string;

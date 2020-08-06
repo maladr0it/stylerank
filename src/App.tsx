@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Link } from "react-router-dom";
 
 import { Home } from "./Home";
 import { Challenge } from "./Challenge";
@@ -9,13 +9,15 @@ export const App = () => {
   return (
     <>
       <header className="App-header">
-        <h1>Stylerank</h1>
+        <Link to="/">Stylerank</Link>
+        <Link to="/challenge/001">001</Link>
+        <Link to="/challenge/002">002</Link>
       </header>
       <Switch>
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/challenge">
+        <Route path="/challenge/:id">
           <Challenge />
         </Route>
       </Switch>

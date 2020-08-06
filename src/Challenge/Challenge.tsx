@@ -1,6 +1,7 @@
 import React, { useEffect, useCallback, useReducer } from "react";
+import { useParams } from "react-router-dom";
 
-import { getChallenge, ChallengeData } from "../services/challenges";
+import { getChallenge } from "../services/challenges";
 import { Editor } from "../Editor";
 
 import { challengeReducer } from "./challengeReducer";
@@ -18,16 +19,17 @@ const INITIAL_STATE = {
 self.MonacoEnvironment = {
   getWorkerUrl: function (_: string, label: string) {
     if (label === "css") {
-      return "./css.worker.bundle.js";
+      return "/css.worker.bundle.js";
     }
     if (label === "html") {
-      return "./html.worker.bundle.js";
+      return "/html.worker.bundle.js";
     }
-    return "./editor.worker.bundle.js";
+    return "/editor.worker.bundle.js";
   },
 };
 
 export const Challenge = () => {
+  const { id } = useParams<{ id: string }>();
   const [state, dispatch] = useReducer(challengeReducer, INITIAL_STATE);
 
   const setHtml = useCallback((value: string) => {
@@ -40,12 +42,12 @@ export const Challenge = () => {
 
   useEffect(() => {
     const load = async () => {
-      const data = await getChallenge("challenge_001");
+      const data = await getChallenge(id);
       dispatch({ type: "challenge_loaded", payload: data });
     };
 
     load();
-  }, []);
+  }, [id]);
 
   return (
     <>
