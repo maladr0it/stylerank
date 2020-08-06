@@ -1,7 +1,3 @@
-.ChallengeList-difficultyKey {
-  padding: 16px 16px 0;
-}
-
 .ChallengeList {
   display: grid;
   grid-auto-flow: row;
@@ -11,6 +7,7 @@
   list-style: none;
   padding: 16px;
 }
+
 .ChallengeList-item {
   display: block;
   border-radius: 8px;
@@ -44,4 +41,24 @@
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   transition: 0.15s ease;
+}
+
+.ChallengeList-difficulty {
+  display: inline-block;
+  border-radius: 8px;
+  padding: 4px 8px;
+  background-color: pink;
+  color: white;
+}
+
+.ChallengeList-difficulty--easy {
+  background-color: green;
+}
+
+.ChallengeList-difficulty--medium {
+  background-color: gold;
+}
+
+.ChallengeList-difficulty--hard {
+  background-color: firebrick;
 }

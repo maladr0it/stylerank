@@ -1,63 +1,102 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import classnames from "classnames";
 import "./ChallengeList.css";
 
 const challenges = [
   {
-    name: "flex challenge 1",
-    difficulty: 4,
+    name: "The Staircase",
+    difficulty: "easy",
     id: 1,
-    image: "https://assets.codepen.io/285131/hand-drawn-monster-milkshake.jpg",
+    coverImage: {
+      src: "/theStaircase.png",
+      description: "",
+    },
+    images: [
+      {
+        src:
+          "https://assets.codepen.io/285131/hand-drawn-monster-milkshake.jpg",
+        description: "",
+      },
+    ],
   },
   {
     name: "flex challenge 1",
-    difficulty: 1,
+    difficulty: "easy",
     id: 2,
-    image: "assets/target.png",
+    coverImage: { src: "assets/target.png", description: "" },
+    images: [{ src: "assets/target.png", description: "" }],
   },
   {
     name: "flex challenge 1",
-    difficulty: 2,
+    difficulty: "medium",
     id: 3,
-    image: "https://assets.codepen.io/285131/adventure.jpg",
+    coverImage: {
+      src: "https://assets.codepen.io/285131/adventure.jpg",
+      description: "",
+    },
+    images: [
+      {
+        src: "https://assets.codepen.io/285131/adventure.jpg",
+        description: "",
+      },
+    ],
   },
   {
     name: "flex challenge 1",
-    difficulty: 3,
+    difficulty: "hard",
     id: 4,
-    image: "assets/target.png",
+    coverImage: { src: "assets/target.png", description: "" },
+    images: [
+      {
+        src: "https://assets.codepen.io/285131/adventure.jpg",
+        description: "",
+      },
+    ],
   },
   {
     name: "flex challenge 1",
-    difficulty: 4,
+    difficulty: "hard",
     id: 5,
-    image: "https://assets.codepen.io/285131/pink-pastel-juicy-banana.jpg",
+    coverImage: {
+      src: "https://assets.codepen.io/285131/pink-pastel-juicy-banana.jpg",
+      description: "",
+    },
+    images: [
+      {
+        src: "https://assets.codepen.io/285131/pink-pastel-juicy-banana.jpg",
+        description: "",
+      },
+    ],
   },
 ];
 
 export const ChallengeList = () => {
-  const challengeItems = challenges.map(({ name, difficulty, image, id }) => (
-    <li key={id}>
-      <Link className="ChallengeList-item" to={`/challenge/${id}`}>
-        <div className="ChallengeList-imageContainer">
-          <img className="ChallengeList-image" src={image} />
-        </div>
-        <div className="ChallengeList-description">
-          <div className="ChallengeList-name">{name}</div>
-          <div className="ChallengeList-difficulty">
-            {Array(difficulty).fill("★")}
+  const challengeItems = challenges.map(
+    ({ name, difficulty, coverImage, id }) => (
+      <li key={id}>
+        <Link className="ChallengeList-item" to={`/challenge/${id}`}>
+          <div className="ChallengeList-imageContainer">
+            <img className="ChallengeList-image" src={coverImage.src} />
           </div>
-        </div>
-      </Link>
-    </li>
-  ));
+          <div className="ChallengeList-description">
+            <div className="ChallengeList-name">{name}</div>
+            <span
+              className={classnames(
+                "ChallengeList-difficulty",
+                `ChallengeList-difficulty--${difficulty}`,
+              )}
+            >
+              {difficulty}
+            </span>
+          </div>
+        </Link>
+      </li>
+    ),
+  );
 
   return (
-    <div className="ChallengeList-container">
-      <div className="ChallengeList-difficultyKey">
-        <div>★ = easy</div>
-        <div> ★★★★★ = difficult</div>
-      </div>
+    <div className={"ChallengeList-container"}>
       <ul className="ChallengeList">{challengeItems}</ul>
     </div>
   );
