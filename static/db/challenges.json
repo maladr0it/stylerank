@@ -14,8 +14,8 @@
       }
     ],
     "initialEditorValues": {
-      "html": "<h1>challenge 1</h1>",
-      "css": "h1 { color: blue; }"
+      "html": "<div class=\"container\">\n    <div class=\"box\"></div>\n    <div class=\"box\"></div>\n    <div class=\"box\"></div>\n</div>\n",
+      "css": ".container {\n    width: 400px;\n    height: 400px;\n}\n\n.box {\n    width: 33.3333%;\n    height: 16.666666%;\n    background-color: #554180;\n}"
     }
   },
   {
@@ -28,16 +28,17 @@
     },
     "images": [{ "src": "/static/images/topNav.png", "description": "" }],
     "initialEditorValues": {
-      "html": "<h1>challenge 1</h1>",
-      "css": "h1 { color: blue; }"
+      "html": "<nav class=\"nav\">\n    <button class=\"backButton\">❮</button>\n    <h1 class=\"heading\">Heading</h1>\n</nav>\n<main class=\"main\">\n    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>\n    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>\n</main>\n",
+      "css": ""
     }
   },
+
   {
     "name": "Button Group",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "id": "3",
     "coverImage": {
-      "src": "/static/images/buttonGroupHover.png",
+      "src": "/static/images/buttonGroup.gif",
       "description": ""
     },
     "images": [
@@ -51,24 +52,8 @@
       }
     ],
     "initialEditorValues": {
-      "html": "<h1>challenge 1</h1>",
-      "css": "h1 { color: blue; }"
-    }
-  },
-  {
-    "name": "matrix",
-    "difficulty": "hard",
-    "id": "4",
-    "coverImage": { "src": "/static/images/matrix.gif", "description": "" },
-    "images": [
-      {
-        "src": "/static/images/matrix.gif",
-        "description": ""
-      }
-    ],
-    "initialEditorValues": {
-      "html": "<h1>challenge 1</h1>",
-      "css": "h1 { color: blue; }"
+      "html": "<div class=\"buttonsContainer\">\n    <button class=\"button\">\n        One\n    </button>\n    <button class=\"button\">\n        Two\n    </button>\n    <button class=\"button\">\n        Three\n    </button>\n</div>",
+      "css": "body {\n    font-family: sans-serif;\n}\n\n/* button font color #3f51b5\nbutton background color rgba(0, 0, 0, 0.23)\n\nhover border color #3f51b5;\nhover background  rgba(63, 81, 181, 0.04); */"
     }
   },
   {
@@ -86,8 +71,24 @@
       }
     ],
     "initialEditorValues": {
-      "html": "<h1>challenge 1</h1>",
-      "css": "h1 { color: blue; }"
+      "html": "<p>100%</p>\n<div class=\"track\" role=\"progressbar\" aria-valuenow=\"100\" aria-valuemin=\"0\" aria-valuemax=\"100\">\n    <div class=\"fill\"></div>\n</div>",
+      "css": ".track {\n    /* color #ccc; */\n}\n\n.fill {\n    /* gadient colors */\n    /* #8a2387, #e94057, #f27121); */\n}"
+    }
+  },
+  {
+    "name": "matrix",
+    "difficulty": "hard",
+    "id": "4",
+    "coverImage": { "src": "/static/images/matrix.gif", "description": "" },
+    "images": [
+      {
+        "src": "/static/images/matrix.gif",
+        "description": ""
+      }
+    ],
+    "initialEditorValues": {
+      "html": "<div class=\"typewriter\">\n    <p>Follow the white rabbit</p>\n</div>",
+      "css": "body {\n    font-family: \"Courier Prime\", monospace;\n    background-color: black;\n}\n\n.typewriter p {\n    color: #00fff3;\n    font-size: 1.5rem;\n    text-shadow: 1px 1px 3px #0bffd1;\n}"
     }
   }
 ]
