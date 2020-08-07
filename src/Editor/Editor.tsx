@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import * as monaco from "monaco-editor";
-import nightOwlTheme from "./themes/NightOwl.json";
+import cloudsMidnight from "./themes/CloudsMidnight.json";
 import "./Editor.css";
 
 const OPTIONS: monaco.editor.IStandaloneEditorConstructionOptions = {
@@ -12,10 +12,11 @@ const OPTIONS: monaco.editor.IStandaloneEditorConstructionOptions = {
 };
 
 monaco.editor.defineTheme(
-  "NightOwl",
-  nightOwlTheme as monaco.editor.IStandaloneThemeData,
+  "cloudsMidnight",
+  cloudsMidnight as monaco.editor.IStandaloneThemeData,
 );
-monaco.editor.setTheme("NightOwl");
+
+monaco.editor.setTheme("cloudsMidnight");
 
 interface Props {
   language: "html" | "css";

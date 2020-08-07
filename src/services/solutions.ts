@@ -15,7 +15,7 @@ export interface SolutionData {
 const MOCK_SOLUTIONS: SolutionData[] = [
   {
     id: "solution_001",
-    challengeId: "001",
+    challengeId: "1",
     editorValues: {
       html: "challenge1 solution html",
       css: "challenge1 solution css",
@@ -24,7 +24,7 @@ const MOCK_SOLUTIONS: SolutionData[] = [
   },
   {
     id: "solution_002",
-    challengeId: "002",
+    challengeId: "2",
     editorValues: {
       html: null,
       css: null,

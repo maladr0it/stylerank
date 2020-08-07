@@ -4,7 +4,7 @@ import { delay } from "../utils";
 const DB_URL = "/static/db";
 const MOCK_DELAY = 250;
 
-interface Image {
+export interface Image {
   src: string;
   description: string;
 }

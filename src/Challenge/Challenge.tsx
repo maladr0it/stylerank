@@ -106,7 +106,9 @@ export const Challenge = () => {
             <header className="Challenge-paneHeader">
               <h2>Target</h2>
             </header>
-            <Target className="Challenge-paneContent" />
+            <div className="Challenge-paneContent">
+              <Target image={state.challenge.coverImage} />
+            </div>
           </section>
         </div>
         <div style={{ overflow: "hidden" }}>Footer controls</div>

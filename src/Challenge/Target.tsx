@@ -1,16 +1,18 @@
 import React from "react";
-
-import { Preview } from "../Preview";
-
-const INITIAL_VALUES = {
-  html: `<h1>Hello</h1>`,
-  css: `h1 { color: pink };`,
-};
+import { Image } from "../services/challenges";
+import "./Target.css";
 
 interface Props {
   className?: string;
+  image: Image;
 }
 
-export const Target = ({ className }: Props) => {
-  return <Preview className={className} {...INITIAL_VALUES} />;
+export const Target = ({ image }: Props) => {
+  return (
+    <div className={"Target"}>
+      <div className="Target-imageContainer">
+        <img className="Target-image" src={image.src} />
+      </div>
+    </div>
+  );
 };

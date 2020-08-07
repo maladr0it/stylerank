@@ -1,51 +1,5 @@
 [
   {
-    "id": "001",
-    "name": "Challenge 1",
-    "difficulty": "easy",
-    "coverImage": {
-      "src": "/static/images/img_001.jpeg",
-      "description": ""
-    },
-    "images": [
-      {
-        "src": "/static/images/img_002.jpeg",
-        "description": ""
-      },
-      {
-        "src": "static/images/img_001.jpeg",
-        "description": ""
-      }
-    ],
-    "initialEditorValues": {
-      "html": "<h1>challenge 1</h1>",
-      "css": "h1 { color: blue; }"
-    }
-  },
-  {
-    "id": "002",
-    "name": "Challenge 2",
-    "difficulty": "medium",
-    "coverImage": {
-      "src": "/static/images/img_002.jpeg",
-      "description": ""
-    },
-    "images": [
-      {
-        "src": "/static/images/img_001.jpeg",
-        "description": ""
-      },
-      {
-        "src": "/static/images/img_002.jpeg",
-        "description": ""
-      }
-    ],
-    "initialEditorValues": {
-      "html": "<h1>challenge 2</h1>",
-      "css": "h1 { color: red; }"
-    }
-  },
-  {
     "name": "The Staircase",
     "difficulty": "easy",
     "id": "1",
