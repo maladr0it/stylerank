@@ -9,13 +9,12 @@
 
 .App-header {
   background-color: var(--color-background-primary);
-  color: var(--color-text);
   padding: 16px;
   text-decoration: none;
 }
 
 .App-homeLink {
-  color: var(--color-text);
+  color: inherit;
   text-decoration: none;
   font-size: 2rem;
 }

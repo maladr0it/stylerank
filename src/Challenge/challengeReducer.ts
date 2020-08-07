@@ -1,19 +1,26 @@
-import { EditorValues } from "../types";
+import { EditorValues, SolutionStatus } from "../types";
 import { ChallengeData } from "../services/challenges";
 import { SolutionData } from "../services/solutions";
 
 export interface State {
-  challenge: ChallengeData | null;
-  solution: SolutionData | null;
+  data: {
+    challenge: ChallengeData;
+    solution: SolutionData;
+  } | null;
+  initialEditorValues: EditorValues;
   editorValues: EditorValues;
+  status: SolutionStatus;
 }
 
 type Action =
   | {
       type: "challenge_loaded";
       payload: {
-        challenge: ChallengeData;
-        solution: SolutionData;
+        data: {
+          challenge: ChallengeData;
+          solution: SolutionData;
+        };
+        initialEditorValues: EditorValues;
       };
     }
   | {
@@ -30,13 +37,13 @@ export const challengeReducer = (state: State, action: Action): State => {
 
   switch (action.type) {
     case "challenge_loaded": {
-      const { challenge, solution } = action.payload;
+      const { data, initialEditorValues } = action.payload;
 
       return {
         ...state,
-        editorValues: solution.editorValues,
-        challenge,
-        solution,
+        editorValues: initialEditorValues,
+        initialEditorValues,
+        data,
       };
     }
 

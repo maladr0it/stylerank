@@ -8,10 +8,6 @@
   padding: 24px;
 }
 
-.ChallengeList-itemContainer {
-  height: 100%;
-}
-
 .ChallengeList-item {
   display: grid;
   grid-template-rows: auto 1fr;
@@ -21,10 +17,7 @@
   overflow: hidden;
   transition: 0.15s ease;
   text-decoration: none;
-}
-
-.ChallengeList-item:visited {
-  color: #756d6d;
+  color: inherit;
 }
 
 .ChallengeList-item:hover {
@@ -50,7 +43,6 @@
   padding: 16px;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  color: var(--color-text);
   transition: 0.15s ease;
 }
 
@@ -63,7 +55,6 @@
   display: inline-block;
   border-radius: 8px;
   padding: 4px 8px;
-  color: var(--color-text);
 }
 
 .ChallengeList-difficulty--easy {

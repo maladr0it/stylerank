@@ -5,8 +5,8 @@ import "./Home.css";
 
 export const Home = () => {
   return (
-    <div className="Home">
+    <main className="Home">
       <ChallengeList />
-    </div>
+    </main>
   );
 };

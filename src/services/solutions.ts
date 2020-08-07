@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 
-import { EditorValues } from "../types";
+import { EditorValues, SolutionStatus } from "../types";
 import { delay } from "../utils";
 
 const MOCK_DELAY = 250;
@@ -9,7 +9,7 @@ export interface SolutionData {
   id: string;
   challengeId: string;
   editorValues: EditorValues;
-  status: "none" | "in_progress" | "completed";
+  status: SolutionStatus;
 }
 
 const MOCK_SOLUTIONS: SolutionData[] = [

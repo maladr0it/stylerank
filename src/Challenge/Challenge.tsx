@@ -3,17 +3,18 @@ import { useParams } from "react-router-dom";
 
 import { getChallenge } from "../services/challenges";
 import { getSolution } from "../services/solutions";
-import { Editor } from "../Editor";
+import { Editor, useEditor } from "../Editor";
 
-import { challengeReducer } from "./challengeReducer";
+import { challengeReducer, State } from "./challengeReducer";
 import { Output } from "./Output";
 import { Target } from "./Target";
 import "./Challenge.css";
 
-const INITIAL_STATE = {
-  challenge: null,
-  solution: null,
-  editorValues: { html: "", css: "" },
+const INITIAL_STATE: State = {
+  data: null,
+  status: "none",
+  editorValues: { html: null, css: null },
+  initialEditorValues: { html: null, css: null },
 };
 
 // set up monaco editor
@@ -33,6 +34,8 @@ self.MonacoEnvironment = {
 export const Challenge = () => {
   const { id } = useParams<{ id: string }>();
   const [state, dispatch] = useReducer(challengeReducer, INITIAL_STATE);
+  const htmlEditor = useEditor();
+  const cssEditor = useEditor();
 
   const setHtml = useCallback((value: string) => {
     dispatch({ type: "html_updated", payload: value });
@@ -48,16 +51,33 @@ export const Challenge = () => {
         getChallenge(id),
         getSolution(id),
       ]);
+
+      const initialEditorValues = {
+        html: solution.editorValues.html ?? challenge.initialEditorValues.html,
+        css: solution.editorValues.css ?? challenge.initialEditorValues.css,
+      };
+
       dispatch({
         type: "challenge_loaded",
-        payload: { challenge, solution },
+        payload: {
+          data: { challenge, solution },
+          initialEditorValues,
+        },
       });
     };
 
     load();
   }, [id]);
 
-  if (state.challenge && state.solution) {
+  // update the editor's values if the initial values change
+  useEffect(() => {
+    htmlEditor.setValue(state.initialEditorValues.html ?? "");
+    cssEditor.setValue(state.initialEditorValues.css ?? "");
+  }, [state.initialEditorValues]);
+
+  if (state.data) {
+    const { challenge, solution } = state.data;
+
     return (
       <>
         <div className="Challenge-panes">
@@ -68,12 +88,7 @@ export const Challenge = () => {
             <Editor
               className="Challenge-paneContent"
               language="html"
-              sourceId={state.challenge.id}
-              initialValue={
-                state.solution.editorValues.html ??
-                state.challenge.initialEditorValues.html ??
-                ""
-              }
+              editorRef={htmlEditor.ref}
               onChange={setHtml}
             />
           </section>
@@ -84,12 +99,7 @@ export const Challenge = () => {
             <Editor
               className="Challenge-paneContent"
               language="css"
-              sourceId={state.challenge.id}
-              initialValue={
-                state.solution.editorValues.css ??
-                state.challenge.initialEditorValues.css ??
-                ""
-              }
+              editorRef={cssEditor.ref}
               onChange={setCss}
             />
           </section>
@@ -107,11 +117,11 @@ export const Challenge = () => {
               <h2>Target</h2>
             </header>
             <div className="Challenge-paneContent">
-              <Target image={state.challenge.coverImage} />
+              <Target image={challenge.coverImage} />
             </div>
           </section>
         </div>
-        <div style={{ overflow: "hidden" }}>Footer controls</div>
+        <div style={{ overflow: "hidden" }}>Status: {state.status}</div>
       </>
     );
   }
