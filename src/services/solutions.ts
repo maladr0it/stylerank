@@ -13,24 +13,24 @@ export interface SolutionData {
 }
 
 const MOCK_SOLUTIONS: SolutionData[] = [
-  {
-    id: "solution_001",
-    challengeId: "1",
-    editorValues: {
-      html: "challenge1 solution html",
-      css: "challenge1 solution css",
-    },
-    status: "in_progress",
-  },
-  {
-    id: "solution_002",
-    challengeId: "2",
-    editorValues: {
-      html: null,
-      css: null,
-    },
-    status: "none",
-  },
+  // {
+  //   id: "solution_001",
+  //   challengeId: "1",
+  //   editorValues: {
+  //     html: "challenge1 solution html",
+  //     css: "challenge1 solution css",
+  //   },
+  //   status: "in_progress",
+  // },
+  // {
+  //   id: "solution_002",
+  //   challengeId: "2",
+  //   editorValues: {
+  //     html: null,
+  //     css: null,
+  //   },
+  //   status: "none",
+  // },
 ];
 
 export const getSolutions = async () => {
