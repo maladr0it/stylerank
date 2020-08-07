@@ -2,6 +2,7 @@ import React, { useEffect, useCallback, useReducer } from "react";
 import { useParams } from "react-router-dom";
 
 import { getChallenge } from "../services/challenges";
+import { getSolution } from "../services/solutions";
 import { Editor } from "../Editor";
 
 import { challengeReducer } from "./challengeReducer";
@@ -10,7 +11,8 @@ import { Target } from "./Target";
 import "./Challenge.css";
 
 const INITIAL_STATE = {
-  data: null,
+  challenge: null,
+  solution: null,
   editorValues: { html: "", css: "" },
 };
 
@@ -42,52 +44,75 @@ export const Challenge = () => {
 
   useEffect(() => {
     const load = async () => {
-      const data = await getChallenge(id);
-      dispatch({ type: "challenge_loaded", payload: data });
+      const [challenge, solution] = await Promise.all([
+        getChallenge(id),
+        getSolution(id),
+      ]);
+      dispatch({
+        type: "challenge_loaded",
+        payload: { challenge, solution },
+      });
     };
 
     load();
   }, [id]);
 
-  return (
-    <>
-      {state.data ? (
-        <div className="Challenge">
+  if (state.challenge && state.solution) {
+    return (
+      <>
+        <div className="Challenge-panes">
           <section className="Challenge-pane Challenge-htmlPane">
-            <header className="Challenge-paneHeader">HTML</header>
+            <header className="Challenge-paneHeader">
+              <h2>HTML</h2>
+            </header>
             <Editor
               className="Challenge-paneContent"
               language="html"
-              sourceId={state.data.id}
-              initialValue={state.data.initialEditorValues.html || ""}
+              sourceId={state.challenge.id}
+              initialValue={
+                state.solution.editorValues.html ??
+                state.challenge.initialEditorValues.html ??
+                ""
+              }
               onChange={setHtml}
             />
           </section>
           <section className="Challenge-pane Challenge-cssPane">
-            <header className="Challenge-paneHeader">CSS</header>
+            <header className="Challenge-paneHeader">
+              <h2>CSS</h2>
+            </header>
             <Editor
               className="Challenge-paneContent"
               language="css"
-              sourceId={state.data.id}
-              initialValue={state.data.initialEditorValues.css || ""}
+              sourceId={state.challenge.id}
+              initialValue={
+                state.solution.editorValues.css ??
+                state.challenge.initialEditorValues.css ??
+                ""
+              }
               onChange={setCss}
             />
           </section>
           <section className="Challenge-pane Challenge-outputPane">
-            <header className="Challenge-paneHeader">Output</header>
+            <header className="Challenge-paneHeader">
+              <h2>Output</h2>
+            </header>
             <Output
               className="Challenge-paneContent"
               values={state.editorValues}
             />
           </section>
           <section className="Challenge-pane Challenge-targetPane">
-            <header className="Challenge-paneHeader">Target</header>
+            <header className="Challenge-paneHeader">
+              <h2>Target</h2>
+            </header>
             <Target className="Challenge-paneContent" />
           </section>
         </div>
-      ) : (
-        <h1>LOADING...</h1>
-      )}
-    </>
-  );
+        <div style={{ overflow: "hidden" }}>Footer controls</div>
+      </>
+    );
+  }
+
+  return null;
 };

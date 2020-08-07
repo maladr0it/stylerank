@@ -72,7 +72,11 @@
       "src": "/static/images/topNav.png",
       "description": ""
     },
-    "images": [{ "src": "/static/images/topNav.png", "description": "" }]
+    "images": [{ "src": "/static/images/topNav.png", "description": "" }],
+    "initialEditorValues": {
+      "html": "<h1>challenge 1</h1>",
+      "css": "h1 { color: blue; }"
+    }
   },
   {
     "name": "Button Group",
@@ -107,7 +111,11 @@
         "src": "/static/images/matrix.gif",
         "description": ""
       }
-    ]
+    ],
+    "initialEditorValues": {
+      "html": "<h1>challenge 1</h1>",
+      "css": "h1 { color: blue; }"
+    }
   },
   {
     "name": "Progress bar",

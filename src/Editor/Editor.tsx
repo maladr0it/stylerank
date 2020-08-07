@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import * as monaco from "monaco-editor";
-import nightOwl from "./themes/NightOwl.json";
+import nightOwlTheme from "./themes/NightOwl.json";
 import "./Editor.css";
 
 const OPTIONS: monaco.editor.IStandaloneEditorConstructionOptions = {
@@ -11,6 +11,12 @@ const OPTIONS: monaco.editor.IStandaloneEditorConstructionOptions = {
   },
 };
 
+monaco.editor.defineTheme(
+  "NightOwl",
+  nightOwlTheme as monaco.editor.IStandaloneThemeData,
+);
+monaco.editor.setTheme("NightOwl");
+
 interface Props {
   language: "html" | "css";
   sourceId: string;
@@ -18,13 +24,6 @@ interface Props {
   onChange: (value: string) => void;
   className?: string;
 }
-
-monaco.editor.defineTheme(
-  "NightOwl",
-  nightOwl as monaco.editor.IStandaloneThemeData,
-);
-
-monaco.editor.setTheme("NightOwl");
 
 export const Editor = React.memo(
   ({ language, sourceId, initialValue, onChange, className }: Props) => {

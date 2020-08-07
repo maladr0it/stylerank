@@ -1,15 +1,20 @@
 import { EditorValues } from "../types";
 import { ChallengeData } from "../services/challenges";
+import { SolutionData } from "../services/solutions";
 
 export interface State {
-  data: ChallengeData | null;
+  challenge: ChallengeData | null;
+  solution: SolutionData | null;
   editorValues: EditorValues;
 }
 
 type Action =
   | {
       type: "challenge_loaded";
-      payload: ChallengeData;
+      payload: {
+        challenge: ChallengeData;
+        solution: SolutionData;
+      };
     }
   | {
       type: "html_updated";
@@ -21,14 +26,17 @@ type Action =
     };
 
 export const challengeReducer = (state: State, action: Action): State => {
-  console.log(action.type);
+  console.log(action, state);
 
   switch (action.type) {
     case "challenge_loaded": {
+      const { challenge, solution } = action.payload;
+
       return {
         ...state,
-        editorValues: action.payload.initialEditorValues,
-        data: action.payload,
+        editorValues: solution.editorValues,
+        challenge,
+        solution,
       };
     }
 
